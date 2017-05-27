@@ -1,0 +1,4 @@
+<!--pages/chapter/chapter.wxml-->
+<import src="../template/chapter.wxml" />
+<template is="chapter" data="{{item}}" wx:for="{{chapterList}}" wx:key="*this">
+</template>

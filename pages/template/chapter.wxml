@@ -1,0 +1,9 @@
+<template name="chapter">
+  <view class="ui-list-item ui-pure-item ui-border-b">
+    <navigator url="../detail/detail?content={{item.Content}}">
+      <view class="ui-item-content ui-nowrap">
+        <text>{{item.Title}}</text>
+      </view>
+    </navigator>
+  </view>
+</template>

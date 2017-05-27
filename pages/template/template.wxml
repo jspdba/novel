@@ -1,0 +1,12 @@
+<template name="bookItem">
+  <navigator url="../chapter/chapter?id={{item.Id}}">
+    <view class="ui-list-item ui-pure-item ui-border-b">
+      <view class="ui-item-span">
+        <text>{{index}}</text>
+      </view>
+      <view class="ui-item-content ui-nowrap">
+        <text>{{item.Name}}</text>
+      </view>
+    </view>
+  </navigator>
+</template>
