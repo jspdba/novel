@@ -16,7 +16,7 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
-function getPromise(url){
+function getPromise(url) {
   var promise = new Promise(function (resove, reject) {
     wx.request({
       url: url,
@@ -35,7 +35,6 @@ function ajaxBookList() {
   var url = 'https://www.wuchaofei.top/book/json/list';
 
   return getPromise(url).then(function (res) {
-    console.log(res)
     return res.data.page.List
   }).catch(function (err) {
     console.log(err)
@@ -43,19 +42,30 @@ function ajaxBookList() {
   })
 }
 
-function ajaxChapterList(id) {
-  var url = 'https://www.wuchaofei.top/chapter/json/list/'+id;
+function ajaxChapterList(id, PageNo) {
+  PageNo=PageNo?PageNo:1
+  var url = 'https://www.wuchaofei.top/chapter/json/list/' + id + "?PageNo=" + PageNo;
   return getPromise(url).then(function (res) {
-    console.log(res)
-    return res.data.page.List
+    return res.data.page
   }).catch(function (err) {
     console.log(err)
-    return []
+    return {}
+  })
+}
+
+function ajaxChapterDetail(id) {
+  var url = 'https://www.wuchaofei.top/chapter/json/detail/' + id;
+  return getPromise(url).then(function (res) {
+    return res.data.data
+  }).catch(function (err) {
+    console.log(err)
+    return null
   })
 }
 
 module.exports = {
   formatTime: formatTime,
   ajaxBookList: ajaxBookList,
-  ajaxChapterList: ajaxChapterList
+  ajaxChapterList: ajaxChapterList,
+  ajaxChapterDetail: ajaxChapterDetail
 }

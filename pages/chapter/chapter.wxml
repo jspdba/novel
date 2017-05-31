@@ -1,4 +1,14 @@
 <!--pages/chapter/chapter.wxml-->
 <import src="../template/chapter.wxml" />
-<template is="chapter" data="{{item}}" wx:for="{{chapterList}}" wx:key="*this">
-</template>
+<template is="chapter" data="{{item}}" wx:for="{{chapterList}}" wx:key="*this"></template>
+<view class="flex-wrp" style="flex-direction:row;">
+  <view class="flex-item flex-item-V">
+    <button class="mini-btn" type="primary" size="primary" bindtap="toHome">首页</button>
+  </view>
+  <view class="flex-item">
+    <input bindconfirm="toPage" class="weui-input" type="number" placeholder="第几页" value="{{PageNo}}" />
+  </view>
+  <view class="flex-item flex-item-V">
+    <button class="mini-btn" maxlength="10" type="primary" size="primary" bindtap="toEnd">末页</button>
+  </view>
+</view>

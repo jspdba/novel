@@ -15,7 +15,6 @@ Page({
   onLoad: function (options) {
     var self = this
     util.ajaxBookList().then(function(res){
-      console.log(res)
         self.setData({
           bookList : res
         })

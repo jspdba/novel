@@ -1,4 +1,6 @@
 // pages/detail/detail.js
+var util = require('../../utils/util.js');
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -12,8 +14,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      content: options.content
+    var self=this
+    util.ajaxChapterDetail(options.id).then(function (result) {
+      WxParse.wxParse('Content', 'html', result.Content, self, 0);
+      // self.setData({
+      //   content: result
+      // })
     })
   },
 

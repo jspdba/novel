@@ -1,1 +1,14 @@
 /* pages/chapter/chapter.wxss */
+
+.flex-wrp{
+  margin-top: 60rpx;
+  display:flex;
+}
+.flex-item{
+  width: 250rpx;
+  font-size: 26rpx;
+}
+.flex-item-V{
+  margin: 0 auto;
+  width: 250rpx;
+}
