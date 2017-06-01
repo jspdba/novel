@@ -3,7 +3,7 @@
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello Boy!',
+    motto: '点击头像，开始小说之旅',
     userInfo: {},
     male:false
   },

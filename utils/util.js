@@ -62,10 +62,31 @@ function ajaxChapterDetail(id) {
     return null
   })
 }
-
+// 下一页
+function ajaxChapterDetailNext(id) {
+  var url = 'https://www.wuchaofei.top/chapter/json/next/' + id;
+  return getPromise(url).then(function (res) {
+    return res.data.data
+  }).catch(function (err) {
+    console.log(err)
+    return null
+  })
+}
+// 上一页
+function ajaxChapterDetailPre(id) {
+  var url = 'https://www.wuchaofei.top/chapter/json/pre/' + id;
+  return getPromise(url).then(function (res) {
+    return res.data.data
+  }).catch(function (err) {
+    console.log(err)
+    return null
+  })
+}
 module.exports = {
   formatTime: formatTime,
   ajaxBookList: ajaxBookList,
   ajaxChapterList: ajaxChapterList,
-  ajaxChapterDetail: ajaxChapterDetail
+  ajaxChapterDetail: ajaxChapterDetail,
+  ajaxChapterDetailNext: ajaxChapterDetailNext,
+  ajaxChapterDetailPre: ajaxChapterDetailPre
 }

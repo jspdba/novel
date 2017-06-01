@@ -2,4 +2,11 @@
 <import src="../template/template.wxml" />
 <scroll-view>
   <template is="bookItem" data="{{item}}" wx:for="{{bookList}}" wx:key="*this"></template>
+  <view class="ui-tips">
+      <view wx:if="{{hidden}}">
+      </view>
+      <view wx:else>
+        <text>内容加载中...</text>
+      </view>
+    </view>
 </scroll-view>

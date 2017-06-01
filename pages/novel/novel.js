@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hidden: false,
     bookList:[]
   },
 
@@ -16,6 +17,7 @@ Page({
     var self = this
     util.ajaxBookList().then(function(res){
         self.setData({
+          hidden: true,
           bookList : res
         })
     })

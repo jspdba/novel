@@ -1,12 +1,19 @@
 <!--pages/chapter/chapter.wxml-->
 <import src="../template/chapter.wxml" />
-<template is="chapter" data="{{item}}" wx:for="{{chapterList}}" wx:key="*this"></template>
+<template is="chapter" data="{{item}}" wx:for="{{chapterList}}" wx:key="item.Id"></template>
+<view class="ui-tips">
+      <view wx:if="{{hidden}}">
+      </view>
+      <view wx:else>
+        <text>内容加载中...</text>
+      </view>
+    </view>
 <view class="flex-wrp" style="flex-direction:row;">
   <view class="flex-item flex-item-V">
     <button class="mini-btn" type="primary" size="primary" bindtap="toHome">首页</button>
   </view>
-  <view class="flex-item">
-    <input bindconfirm="toPage" class="weui-input" type="number" placeholder="第几页" value="{{PageNo}}" />
+  <view class="flex-item section">
+    <input id="toPage" bindconfirm="toPage" class="weui-input" type="number" placeholder="第几页" confirm-type="done" value="{{PageNo}}" />
   </view>
   <view class="flex-item flex-item-V">
     <button class="mini-btn" maxlength="10" type="primary" size="primary" bindtap="toEnd">末页</button>

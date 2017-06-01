@@ -9,7 +9,8 @@ Page({
     chapterList: [],
     id: 0,
     chapterPage: {},
-    PageNo: 1
+    PageNo: 1,
+    hidden: false
   },
 
   /**
@@ -17,12 +18,16 @@ Page({
    */
   onLoad: function (param) {
     var self = this
+
+    self.setData({
+      hidden: false
+    })
     util.ajaxChapterList(param.id).then(function (result) {
-      console.log(result)
       self.setData({
         chapterList: result.List,
         chapterPage: result,
-        id: param.id
+        id: param.id,
+        hidden: true
       })
     })
   },
@@ -59,6 +64,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    console.log("下拉事件")
   },
 
   /**
@@ -67,14 +73,19 @@ Page({
   onReachBottom: function () {
     var self = this
     var PageNo = self.data.PageNo + 1
+
+    self.setData({
+      hidden: false
+    })
     util.ajaxChapterList(self.data.id, PageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
         chapterPage: result
       })
-      if (result.length > 0) {
+      if (result.List.length > 0) {
         self.setData({
-          PageNo: PageNo
+          PageNo: PageNo,
+          hidden: true
         })
       }
 
@@ -90,14 +101,18 @@ Page({
   toHome: function (e) {
     var self = this
     var PageNo = 1
+    self.setData({
+      hidden: false
+    })
     util.ajaxChapterList(self.data.id, PageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
         chapterPage: result
       })
-      if (result.length > 0) {
+      if (result.List.length > 0) {
         self.setData({
-          PageNo: PageNo
+          PageNo: PageNo,
+          hidden: true
         })
       }
     })
@@ -105,14 +120,19 @@ Page({
   toEnd: function (e) {
     var self = this
     var PageNo = self.data.chapterPage.TotalPage
+
+    self.setData({
+      hidden: false
+    })
     util.ajaxChapterList(self.data.id, PageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
         chapterPage: result
       })
-      if (result.length > 0) {
+      if (result.List.length > 0) {
         self.setData({
-          PageNo: PageNo
+          PageNo: PageNo,
+          hidden: true
         })
       }
     })
@@ -120,14 +140,23 @@ Page({
   toPage: function(e){
     var self = this
     var PageNo = e.detail.value
+    if(self.data.PageNo == PageNo){
+      //如果页码未变则不更新
+      return
+    }
+
+    self.setData({
+      hidden: false
+    })
     util.ajaxChapterList(self.data.id, PageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
         chapterPage: result
       })
-      if (result.length > 0) {
+      if (result.List.length > 0) {
         self.setData({
-          PageNo: PageNo
+          PageNo: PageNo,
+          hidden: true
         })
       }
     })
