@@ -1,7 +1,7 @@
 <!--pages/novel/novel.wxml-->
 <import src="../template/template.wxml" />
 <scroll-view>
-  <template is="bookItem" data="{{item}}" wx:for="{{bookList}}" wx:key="*this"></template>
+  <template is="bookItem" data="{{item}}" wx:for="{{bookList}}" wx:key="item.Id"></template>
   <view class="ui-tips">
       <view wx:if="{{hidden}}">
       </view>

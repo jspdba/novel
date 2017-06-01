@@ -1,15 +1,15 @@
 <!--pages/detail/detail.wxml-->
 <import src="/wxParse/wxParse.wxml" />
-<view class="classname" bindtouchmove="handletouchmove" bindtouchstart="handletouchtart" bindtouchend="handletouchend">
-  <template is="wxParse" data="{{wxParseData:Content.nodes}}" />
+<view class="ui-content" bindtouchmove="handletouchmove" bindtouchstart="handletouchtart" bindtouchend="handletouchend">
+    <template is="wxParse" data="{{wxParseData:Content.nodes}}" />
 </view>
 
 <view class="ui-tips">
-      <view wx:if="{{hidden}}">
-      </view>
-      <view wx:else>
-        <text>内容加载中...</text>
-      </view>
-    </view>
+  <view wx:if="{{hidden}}">
+  </view>
+  <view wx:else>
+    <text>内容加载中...</text>
+  </view>
+</view>
 
 <!--<text>{{content.Content}}</text>-->

@@ -12,6 +12,7 @@ Page({
     wx.navigateTo({
       // url: '../logs/logs'
       url:'../novel/novel'
+      // url: '../todayOnHistory/todayOnHistory'
     })
   },
   onLoad: function () {

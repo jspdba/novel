@@ -1,5 +1,5 @@
 <template name="chapter">
-  <view class="ui-list-item ui-pure-item ui-border-b">
+  <view class="ui-pure-item ui-border-b">
     <navigator url="../detail/detail?id={{item.Id}}">
       <view class="ui-item-content ui-nowrap">
         <text>{{item.Title}}</text>

@@ -24,7 +24,12 @@ Page({
   onLoad: function (options) {
     var self = this
     util.ajaxChapterDetail(options.id).then(function (result) {
-      WxParse.wxParse('Content', 'html', result.Content, self, 0);
+      if (result.Content){
+        result.Content = result.Content.replace(/readx\(\);\s.*?/, '')
+        WxParse.wxParse('Content', 'html', result.Content, self, 0);
+      }else{
+        WxParse.wxParse('Content', 'html', result.Url, self, 0);
+      }
       wx.setNavigationBarTitle({
         title: result.Title ? result.Title : ""
       })

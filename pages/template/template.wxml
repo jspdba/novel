@@ -1,11 +1,22 @@
 <template name="bookItem">
   <navigator url="../chapter/chapter?id={{item.Id}}">
+    <view class="ui-pure-item ui-border-b">
+      <view class="ui-item-content">
+        <text>{{item.Name}}</text>
+      </view>
+    </view>
+  </navigator>
+</template>
+
+<!--历史上的今天-->
+<template name="tItem">
+  <navigator url="../todayOnHistoryDetail/todayOnHistoryDetail?id={{item.e_id}}">
     <view class="ui-list-item ui-pure-item ui-border-b">
       <view class="ui-item-span">
-        <text>{{index}}</text>
+        <text>{{item.date}}</text>
       </view>
       <view class="ui-item-content ui-nowrap">
-        <text>{{item.Name}}</text>
+        <text>{{item.title}}</text>
       </view>
     </view>
   </navigator>

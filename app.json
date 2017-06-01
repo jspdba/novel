@@ -4,12 +4,14 @@
     "pages/logs/logs",
     "pages/novel/novel",
     "pages/chapter/chapter",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/todayOnHistory/todayOnHistory",
+    "pages/todayOnHistoryDetail/todayOnHistoryDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#3e3e3e",
+    "navigationBarTitleText": "武超飞",
+    "navigationBarTextStyle": "white"
   }
 }
