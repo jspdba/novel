@@ -9,10 +9,9 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
+    wx.switchTab({
       // url: '../logs/logs'
       url:'../novel/novel'
-      // url: '../todayOnHistory/todayOnHistory'
     })
   },
   onLoad: function () {

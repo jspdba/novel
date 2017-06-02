@@ -160,5 +160,9 @@ Page({
         })
       }
     })
+  },
+  onPullDownRefresh: function () {
+    console.log("onpullDownRefresh")
+    wx.stopPullDownRefresh()
   }
 })

@@ -15,11 +15,15 @@ Page({
    */
   onLoad: function (options) {
     var self = this
+    wx.showLoading({
+      title: '加载中',
+    })
     util.ajaxBookList().then(function(res){
         self.setData({
           hidden: true,
           bookList : res
         })
+        wx.hideLoading()
     })
     
   },
