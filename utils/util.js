@@ -43,7 +43,7 @@ function ajaxBookList() {
 }
 
 function ajaxChapterList(id, PageNo) {
-  PageNo=PageNo?PageNo:1
+  PageNo = PageNo ? PageNo : 1
   var url = 'https://www.wuchaofei.top/chapter/json/list/' + id + "?PageNo=" + PageNo;
   return getPromise(url).then(function (res) {
     return res.data.page
@@ -148,6 +148,28 @@ function getDetail(e_id) {
       return []
     })
 }
+
+function getUserInfo(code) {
+  var url = 'https://www.wuchaofei.top/wxapp/userInfo';
+  return new Promise(function (resove, reject) {
+    wx.request({
+      url: url,
+      data: {
+        code: code
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: resove,
+      fail: reject
+    })
+  }).then(function (res) {
+    return res
+  }).catch(function (err) {
+    console.log(err)
+    return null
+  })
+}
 //历史上的今天结束
 module.exports = {
   formatTime: formatTime,
@@ -157,5 +179,6 @@ module.exports = {
   ajaxChapterDetailNext: ajaxChapterDetailNext,
   ajaxChapterDetailPre: ajaxChapterDetailPre,
   getEvents: getEvents,
-  getDetail: getDetail
+  getDetail: getDetail,
+  getUserInfo: getUserInfo
 }

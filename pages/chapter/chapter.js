@@ -18,17 +18,26 @@ Page({
    */
   onLoad: function (param) {
     var self = this
+    var key = "book_log_" + param.id
+    var pageNo = wx.getStorageSync(key)
 
+    pageNo = pageNo ? pageNo : self.data.PageNo
     self.setData({
       hidden: false
     })
-    util.ajaxChapterList(param.id).then(function (result) {
+    util.ajaxChapterList(param.id, pageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
         chapterPage: result,
         id: param.id,
         hidden: true
       })
+
+      if (result.List.length > 0) {
+        self.setData({
+          PageNo: pageNo
+        })
+      }
     })
   },
 
@@ -50,7 +59,15 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    var key = "book_log_" + this.data.id
+    //保存本次阅读记录
+    try {
+      // var value = wx.getStorageSync(key)
+      wx.setStorageSync(key, this.data.PageNo)
+    } catch (e) {
+      // Do something when catch error
+      console.log(e)
+    }
   },
 
   /**
@@ -80,12 +97,13 @@ Page({
     util.ajaxChapterList(self.data.id, PageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
-        chapterPage: result
+        chapterPage: result,
+        hidden: true
+
       })
       if (result.List.length > 0) {
         self.setData({
-          PageNo: PageNo,
-          hidden: true
+          PageNo: PageNo
         })
       }
 
@@ -107,12 +125,12 @@ Page({
     util.ajaxChapterList(self.data.id, PageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
-        chapterPage: result
+        chapterPage: result,
+        hidden: true
       })
       if (result.List.length > 0) {
         self.setData({
-          PageNo: PageNo,
-          hidden: true
+          PageNo: PageNo
         })
       }
     })
@@ -127,20 +145,20 @@ Page({
     util.ajaxChapterList(self.data.id, PageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
-        chapterPage: result
+        chapterPage: result,
+        hidden: true
       })
       if (result.List.length > 0) {
         self.setData({
-          PageNo: PageNo,
-          hidden: true
+          PageNo: PageNo
         })
       }
     })
   },
-  toPage: function(e){
+  toPage: function (e) {
     var self = this
     var PageNo = e.detail.value
-    if(self.data.PageNo == PageNo){
+    if (self.data.PageNo == PageNo) {
       //如果页码未变则不更新
       return
     }
@@ -151,18 +169,23 @@ Page({
     util.ajaxChapterList(self.data.id, PageNo).then(function (result) {
       self.setData({
         chapterList: result.List,
-        chapterPage: result
+        chapterPage: result,
+        hidden: true
       })
       if (result.List.length > 0) {
         self.setData({
-          PageNo: PageNo,
-          hidden: true
+          PageNo: PageNo
         })
       }
     })
   },
   onPullDownRefresh: function () {
-    console.log("onpullDownRefresh")
     wx.stopPullDownRefresh()
+  },
+  redirect2detail: function (event) {
+    var self = this
+    wx.navigateTo({
+      url: '../detail/detail?id=' + event.currentTarget.dataset.item.Id
+    })
   }
 })

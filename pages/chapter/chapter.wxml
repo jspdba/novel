@@ -15,4 +15,4 @@
   <input id="toPage" bindconfirm="toPage" class="weui-input" type="number" placeholder="第几页" confirm-type="done" value="{{PageNo}}" />
   <button class="" maxlength="10" type="primary" size="primary" bindtap="toEnd">末页</button>
 </view>
- <template is="foot" />
+<template is="foot" />

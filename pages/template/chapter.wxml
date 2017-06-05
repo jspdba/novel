@@ -1,10 +1,16 @@
 <template name="chapter">
-  <view class="ui-pure-item ui-border-b">
+  <!--<view class="ui-pure-item ui-border-b">
     <navigator url="../detail/detail?id={{item.Id}}">
       <view class="ui-item-content ui-nowrap">
         <text>{{item.Title}}</text>
       </view>
     </navigator>
-  </view>
+  </view>-->
+
+  <view class="ui-pure-item ui-border-b">
+        <view bindtap="redirect2detail" data-item="{{item}}" class="ui-item-content ui-nowrap">
+          <text>{{item.Title}}</text>
+        </view>
+    </view>
   
 </template>
